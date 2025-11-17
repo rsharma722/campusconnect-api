@@ -1,9 +1,14 @@
 import { Router } from 'express';
+import {
+  joinEvent,
+  getMyParticipants,
+  updateParticipant
+} from '../controllers/participants.controller';
 
 const router = Router();
 
-router.post('/:id/join', (_req, res) => res.status(201).json({ message: 'joined' }));
-router.get('/mine', (_req, res) => res.json([]));
-router.patch('/:id', (_req, res) => res.json({}));
+router.post('/:id/join', joinEvent);
+router.get('/mine', getMyParticipants);
+router.patch('/:id', updateParticipant);
 
 export default router;
