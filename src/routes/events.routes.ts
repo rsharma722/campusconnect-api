@@ -15,12 +15,15 @@ import {
   updateEvent,
   deleteEvent
 } from '../controllers/events.controller';
+import { validateBody } from '../middleware/validateBody';
+import { createEventSchema } from '../validation/events.validation';
+
 
 const router = Router();
 
 router.get('/', getAllEvents);
 router.get('/:id', getEventById);
-router.post('/', createEvent);
+router.post('/', validateBody(createEventSchema), createEvent);
 router.put('/:id', updateEvent);
 router.delete('/:id', deleteEvent);
 
