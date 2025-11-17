@@ -1,10 +1,25 @@
+/**
+ * @swagger
+ * /categories:
+ *   get:
+ *     summary: Get all categories
+ *     responses:
+ *       200:
+ *         description: List of categories
+ */
 import { Router } from 'express';
+import {
+  getCategories,
+  createCategory,
+  updateCategory,
+  deleteCategory
+} from '../controllers/categories.controller';
 
 const router = Router();
 
-router.get('/', (_req, res) => res.json([]));
-router.post('/', (_req, res) => res.status(201).json({}));
-router.put('/:id', (_req, res) => res.json({}));
-router.delete('/:id', (_req, res) => res.status(204).send());
+router.get('/', getCategories);
+router.post('/', createCategory);
+router.put('/:id', updateCategory);
+router.delete('/:id', deleteCategory);
 
 export default router;
