@@ -1,0 +1,22 @@
+PS C:\Users\imhar\OneDrive\Desktop\Term3\Back end\Project_Planning> npm test
+
+> project_planning@1.0.0 test
+> jest --coverage
+
+ PASS  src/tests/events.service.test.ts
+  events service
+    √ returns events (6 ms)
+    √ creates an event (1 ms)
+
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------|---------|----------|---------|---------|-------------------
+All files |   72.72 |      100 |      40 |   72.72 |                   
+ ...ce.ts |   72.72 |      100 |      40 |   72.72 | 8,16,20           
+----------|---------|----------|---------|---------|-------------------
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        2.162 s, estimated 4 s
+Ran all test suites.
+PS C:\Users\imhar\OneDrive\Desktop\Term3\Back end\Project_Planning> 
