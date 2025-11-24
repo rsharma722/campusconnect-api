@@ -1,8 +1,16 @@
 import { Request, Response } from 'express';
 import * as eventsService from '../services/events.service';
 
-export const getAllEvents = async (_req: Request, res: Response) => {
-    res.json(await eventsService.getAllEvents());
+export const getAllEvents = async (req: Request, res: Response) => {
+const { categoryId, sort, order } = req.query;
+
+const events = await eventsService.getAllEvents({
+    categoryId: categoryId as string | undefined,
+    sort: sort as 'date' | undefined,
+    order: order as 'asc' | 'desc' | undefined,
+    });
+
+    res.json(events);
 };
 
 export const getEventById = async (req: Request, res: Response) => {

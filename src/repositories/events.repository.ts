@@ -2,9 +2,29 @@ import { db } from '../config/firebase';
 
 const eventsCol = db.collection('events');
 
-export const getAll = async () => {
-    const snap = await eventsCol.get();
-    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+export const getAll = async (query?: {
+    categoryId?: string;
+    sort?: 'date';
+    order?: 'asc' | 'desc';
+}) => {
+    let ref: FirebaseFirestore.Query = eventsCol;
+
+if (query?.categoryId) {
+    ref = ref.where('categoryId', '==', query.categoryId);
+}
+
+const snap = await ref.get();
+let events = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+if (query?.sort === 'date') {
+    events.sort((a: any, b: any) => {
+    const da = new Date(a.date).getTime();
+    const dbb = new Date(b.date).getTime();
+    return query.order === 'desc' ? dbb - da : da - dbb;
+});
+}
+
+    return events;
 };
 
 export const getById = async (id: string) => {
