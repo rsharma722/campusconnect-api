@@ -15,16 +15,18 @@ import {
   updateEvent,
   deleteEvent
 } from '../controllers/events.controller';
+import { authenticate, requireRole } from '../middleware/auth.middleware';
 import { validateBody } from '../middleware/validateBody';
-import { createEventSchema } from '../validation/events.validation';
+import { createEventSchema, updateEventSchema } from '../validation/events.validation';
 
 
 const router = Router();
 
 router.get('/', getAllEvents);
 router.get('/:id', getEventById);
-router.post('/', validateBody(createEventSchema), createEvent);
-router.put('/:id', updateEvent);
-router.delete('/:id', deleteEvent);
+
+router.post('/', authenticate, validateBody(createEventSchema), createEvent);
+router.put('/:id', authenticate, validateBody(updateEventSchema), updateEvent);
+router.delete('/:id', authenticate, requireRole('admin'), deleteEvent);
 
 export default router;

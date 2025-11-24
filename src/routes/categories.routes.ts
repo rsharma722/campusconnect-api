@@ -8,6 +8,7 @@
  *         description: List of categories
  */
 import { Router } from 'express';
+import { authenticate, requireRole } from '../middleware/auth.middleware';
 import {
   getCategories,
   createCategory,
@@ -18,8 +19,10 @@ import {
 const router = Router();
 
 router.get('/', getCategories);
-router.post('/', createCategory);
-router.put('/:id', updateCategory);
-router.delete('/:id', deleteCategory);
+
+router.post('/', authenticate, requireRole('admin'), createCategory);
+router.put('/:id', authenticate, requireRole('admin'), updateCategory);
+router.delete('/:id', authenticate, requireRole('admin'), deleteCategory);
+
 
 export default router;
