@@ -123,26 +123,26 @@
  *       404:
  *         description: Event not found
  */
-import { Router } from 'express';
+import { Router } from "express";
 import {
   getAllEvents,
   getEventById,
   createEvent,
   updateEvent,
-  deleteEvent
-} from '../controllers/events.controller';
-import { authenticate, requireRole } from '../middleware/auth.middleware';
-import { validateBody } from '../middleware/validateBody';
-import { createEventSchema, updateEventSchema } from '../validation/events.validation';
-
+  deleteEvent,
+} from "../controllers/events.controller";
+import { authenticate, requireRole } from "../middleware/auth.middleware";
+import { validateBody } from "../middleware/validateBody";
+import { createEventSchema, updateEventSchema } from "../validation/events.validation";
 
 const router = Router();
 
-router.get('/', getAllEvents);
-router.get('/:id', getEventById);
+router.get("/", getAllEvents);
+router.get("/:id", getEventById);
 
-router.post('/', authenticate, validateBody(createEventSchema), createEvent);
-router.put('/:id', authenticate, validateBody(updateEventSchema), updateEvent);
-router.delete('/:id', authenticate, requireRole('admin'), deleteEvent);
+router.post("/", authenticate, validateBody(createEventSchema), createEvent);
+router.put("/:id", authenticate, validateBody(updateEventSchema), updateEvent);
+
+router.delete("/:id", authenticate, requireRole("admin"), deleteEvent);
 
 export default router;

@@ -84,18 +84,20 @@
  *         description: Participant not found
  */
 
-import { Router } from 'express';
-import { authenticate } from '../middleware/auth.middleware';
+import { Router } from "express";
 import {
   joinEvent,
   getMyParticipants,
-  updateParticipant
-} from '../controllers/participants.controller';
+  updateParticipant,
+} from "../controllers/participants.controller";
+import { authenticate } from "../middleware/auth.middleware";
+import { validateBody } from "../middleware/validateBody";
+import { joinEventSchema, updateParticipantSchema } from "../validation/participants.validation";
 
 const router = Router();
 
-router.post('/:id/join', authenticate, joinEvent);
-router.get('/mine', authenticate, getMyParticipants);
-router.patch('/:id', authenticate, updateParticipant);
+router.post("/:id/join", authenticate, validateBody(joinEventSchema), joinEvent);
+router.get("/mine", authenticate, getMyParticipants);
+router.patch("/:id", authenticate, validateBody(updateParticipantSchema), updateParticipant);
 
 export default router;
