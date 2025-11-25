@@ -1,7 +1,11 @@
-import * as eventsRepo from '../repositories/events.repository';
+import * as eventsRepo from "../repositories/events.repository";
 
-export function getAllEvents() {
-  return eventsRepo.getAll();
+export function getAllEvents(query?: {
+  categoryId?: string;
+  sort?: "date";
+  order?: "asc" | "desc";
+}) {
+  return eventsRepo.getAll(query);
 }
 
 export function getEventById(id: string) {

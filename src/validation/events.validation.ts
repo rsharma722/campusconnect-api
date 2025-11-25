@@ -6,3 +6,10 @@ export const createEventSchema = Joi.object({
   categoryId: Joi.string().optional(),
   date: Joi.string().isoDate().required(),
 });
+
+export const updateEventSchema = Joi.object({
+  title: Joi.string().min(3).max(100).optional(),
+  description: Joi.string().max(500).optional(),
+  categoryId: Joi.string().optional(),
+  date: Joi.string().isoDate().optional(),
+});

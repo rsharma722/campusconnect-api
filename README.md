@@ -12,15 +12,15 @@ This project shows my understanding of Node.js, TypeScript, and Firebase. It is 
 
 The API will have three main resources besides Users.
 
-1. Events – students can create, update, or delete events.
+1. Events - students can create, update, or delete events.
 
 Endpoints: GET /events, GET /events/:id, POST /events, PUT /events/:id, DELETE /events/:id
 
-2. Participants – tracks users who join events.
+2. Participants - tracks users who join events.
 
 Endpoints: POST /events/:id/join, GET /participants/mine, PATCH /participants/:id
 
-3. Categories – groups events into topics like "Study Group," "Sports," or "Club Meeting."
+3. Categories - groups events into topics like "Study Group," "Sports," or "Club Meeting."
 
 Endpoints: GET /categories, POST /categories, PUT /categories/:id, DELETE /categories/:id
 
@@ -56,11 +56,11 @@ GitHub Project Setup
 
 # Branches:
 
-main – final version of the project
+main - final version of the project
 
-develop – branch for ongoing work
+develop - branch for ongoing work
 
-feature – branch for specific features
+feature - branch for specific features
 
 # Project Board Columns: 
 Backlog - In Progress - In Review - Done
