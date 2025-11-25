@@ -5,7 +5,7 @@ export const validateBody = (schema: ObjectSchema) => {
   return (req: Request, res: Response, next: NextFunction) => {
     const { error, value } = schema.validate(req.body, {
       abortEarly: false,
-      stripUnknown: true, 
+      stripUnknown: true,
     });
 
     if (error) {

@@ -1,5 +1,5 @@
-import * as repo from '../repositories/categories.repository';
-import { Category } from '../models/category';
+import * as repo from "../repositories/categories.repository";
+import { Category } from "../models/category";
 
 export function getAllCategories() {
   return repo.getAll();
